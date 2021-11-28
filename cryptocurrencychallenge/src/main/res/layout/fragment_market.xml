@@ -24,7 +24,7 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewExchangeIdTitle"
-        tools:text="bitstamp" />
+        android:text="@string/not_available" />
 
     <TextView
         android:id="@+id/textViewRankTitle"
@@ -45,7 +45,7 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRankTitle"
-        tools:text="1" />
+        android:text="@string/not_available" />
 
     <TextView
         android:id="@+id/textViewPriceTitle"
@@ -66,7 +66,7 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPriceTitle"
-        tools:text="6927.33" />
+        android:text="@string/not_available" />
 
     <TextView
         android:id="@+id/textViewDateTitle"
@@ -87,6 +87,6 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDateTitle"
-        tools:text="27/09/2021" />
+        android:text="@string/not_available" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
