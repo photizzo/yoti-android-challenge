@@ -29,7 +29,7 @@ import javax.inject.Inject
 class CoinViewModel @Inject constructor(
     private val getAssets: GetAssets,
     private val getMarketData: GetMarketData,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO //allow for dispatchers to be injected during testing
 ) : ViewModel() {
     private val _getAssetsLiveData: MutableLiveData<UIState<List<AssetUiItem>>> = MutableLiveData()
     val getAssetsLiveData: LiveData<UIState<List<AssetUiItem>>>
@@ -38,7 +38,6 @@ class CoinViewModel @Inject constructor(
     private val errorHandler = CoroutineExceptionHandler { _, exception ->
         _getAssetsLiveData.postValue(UIState.Failed(exception.localizedMessage))
     }
-
 
     var marketData: List<MarketData> = listOf()
     var assetData: List<AssetData> = listOf()

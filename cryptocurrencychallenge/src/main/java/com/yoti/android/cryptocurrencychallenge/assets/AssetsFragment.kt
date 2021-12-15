@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.yoti.android.cryptocurrencychallenge.R
 import com.yoti.android.cryptocurrencychallenge.databinding.FragmentAssetsBinding
-import com.yoti.android.cryptocurrencychallenge.market.MarketFragment
-import com.yoti.android.cryptocurrencychallenge.market.MarketFragment.Companion.displayMarketFragment
 import com.yoti.android.cryptocurrencychallenge.presentation.state.UIState
 import com.yoti.android.cryptocurrencychallenge.presentation.viewmodel.CoinViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,8 +35,12 @@ class AssetsFragment : Fragment() {
         coinViewModel.getAssetsLiveData.observe(viewLifecycleOwner, { displayAssets(it) })
     }
 
+    /**
+     * Listen for clicks on asset item
+     */
     private fun onItemClickListener(assetUiItem: AssetUiItem) {
-        displayMarketFragment(assetUiItem.symbol, parentFragmentManager)
+        val action = AssetsFragmentDirections.actionAssetsFragmentToMarketFragment(assetUiItem.symbol)
+        findNavController().navigate(action)
     }
 
     /**
@@ -62,7 +64,7 @@ class AssetsFragment : Fragment() {
                 } else {
                     binding.recyclerViewAssets.visibility = View.GONE
                     binding.errorLayout.visibility = View.VISIBLE
-                    binding.tvError.text = "No data to display"
+                    binding.tvError.text = getString(R.string.empty_data)
                 }
 
             }
